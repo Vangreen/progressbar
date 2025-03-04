@@ -29,14 +29,15 @@ type ProgressBar struct {
 
 // State is the basic properties of the bar
 type State struct {
-	Max            int64
-	CurrentNum     int64
-	CurrentPercent float64
-	CurrentBytes   float64
-	SecondsSince   float64
-	SecondsLeft    float64
-	KBsPerSecond   float64
-	Description    string
+	Max                 int64
+	CurrentNum          int64
+	CurrentPercent      float64
+	CurrentBytes        float64
+	SecondsSince        float64
+	SecondsLeft         float64
+	KBsPerSecond        float64
+	Description         string
+	CounterLastTenRates []float64
 }
 
 type state struct {
@@ -1012,6 +1013,7 @@ func (p *ProgressBar) State() State {
 	}
 	s.KBsPerSecond = float64(p.state.currentBytes) / 1024.0 / s.SecondsSince
 	s.Description = p.config.description
+	s.CounterLastTenRates = p.state.counterLastTenRates
 	return s
 }
 
