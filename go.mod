@@ -1,4 +1,4 @@
-module github.com/Vangreen/progressbar/v3
+module github.com/Vangreen/progressbar
 
 require (
 	github.com/chengxilo/virtualterm v1.0.4
